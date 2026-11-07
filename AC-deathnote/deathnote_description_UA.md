@@ -5,7 +5,7 @@
 ### 1. Перша команда яку ми використовуємо —  
 
 ```bash
-   sudo netdiscover -r 10.0.2.0/24
+   sudo netdiscover -r 192.168.56.104/24
 ````
 
 ```bash
@@ -40,7 +40,13 @@
 
 ![webkira](./src/web.png)
 
+* Натискаємо на посилання "hint" та бачимо текст:
 
+```text
+Find a notes.txt file on server
+```
+
+![robots](./src/notes.txt.png)
 
 ---
 
@@ -59,14 +65,6 @@ dirsearch -u http://deathnote.vuln/
 /wordpress/wp-admin/
 /wordpress/wp-content/uploads
 ```
-
-* Натискаємо на посилання "hint" та бачимо текст:
-
-```text
-Find a notes.txt file on server
-```
-
-![robots](./src/notes.txt.png)
 
 * У HTML-коді також знаходимо посилання на директорію, де була зберігається картинки, в назві яких міститься "kira".
 
