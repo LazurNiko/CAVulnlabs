@@ -50,4 +50,3 @@ These materials are created **for educational purposes only**. The techniques de
  
 Thanks to the authors of the virtual machines and the [VulnHub](https://www.vulnhub.com) community for providing a safe environment to practice in.
  
-Відповідь Claude завершено
