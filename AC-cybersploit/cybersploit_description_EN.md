@@ -52,8 +52,8 @@ We open it in the browser and see an encoded string.
 
 ![robots](./src/robots.png)
 
-Let’s decode this string using Burp Decoder to get the first flag.
-Alternatively, you can use the command line:
+
+ Let's decode this string using the command line:
 
 ```sh
 echo "base64-Encoded-String" | base64 --decode
@@ -107,9 +107,13 @@ To gain root access, we investigated the system with the following commands:
 uname -a
 cat /etc/issue
 ```
+
+![robots](./src/issue.png)
+
 ```bash
-CSA@cybersploit-CTF:~$ uname -a
-Linux cybersploit-CTF 3.13.0-32-generic #57~precise1-Ubuntu SMP Tue Jul 15 03:50:54 UTC 2014 i686 i686 i386 GNU/Linux
+uname -a
+```
+Result: Linux cybersploit-CTF 3.13.0-32-generic #57~precise1-Ubuntu SMP Tue Jul 15 03:50:54 UTC 2014 i686 i686 i386 GNU/Linux
 ```
 
 📌 Result:
@@ -125,13 +129,16 @@ gcc 37292.c -o exploit
 ./exploit
 ```
 
-📌 Result: Root access obtained! 🎉
+📌 Result: Root access obtained!
+
+![finalflag](./src/root.png)
 
 We go to the /root/ directory and open the final flag:
 
 ```sh
 cat finalflag.txt
 ```
+![finalflag](./src/finalflag.png)
 
 ```plaintext
 Flag3: You take the red pill… and I show you how deep the rabbit hole goes.
@@ -154,7 +161,7 @@ We get the title:
 Matrix
 ```
 
-✅ Final flag obtained! CTF completed! 🎯
+Final flag obtained! CTF completed!
 
 Conclusion
 

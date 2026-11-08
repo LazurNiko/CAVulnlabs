@@ -1,4 +1,4 @@
-# Death Note
+# Проходження CTF Death Note
 
 ### https://www.vulnhub.com/entry/deathnote-1,739/
 

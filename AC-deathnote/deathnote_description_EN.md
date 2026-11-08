@@ -1,4 +1,4 @@
-# Death Note
+# Death Note CTF Walkthrough
  
 ### https://www.vulnhub.com/entry/deathnote-1,739/
  
