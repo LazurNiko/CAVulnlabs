@@ -12,7 +12,7 @@ A collection of step-by-step walkthroughs (write-ups) of vulnerable virtual mach
 | [AC-deathnote](./AC-deathnote) | Walkthrough of the Death Note machine | Easy |
 | [AC-Matrix-breakout-2](./AC-Matrix-breakout-2/) | Walkthrough of the Matrix-breakout-2 machine | Easy |
 | [AC-Bob](./AC-Bob/) | Walkthrough of the Bob machine | Easy/Intermediate |
-| [AC-coming-soon](./) | No Walkthrough yet | - |
+| [AC-C0lddBox](./AC-C0lddBox/) | Soon Walktrough of the C0lddBox machine | Easy |
  
 ## Repository Structure
  
@@ -23,7 +23,7 @@ CAVulnlabs/
 ├── AC-deathnote/
 ├── AC-Matrix-breakout-2/ 
 └── AC-Bob/
-├── .../   
+├── AC-C0lddBox/
 ```
  
 ## Topics Covered
