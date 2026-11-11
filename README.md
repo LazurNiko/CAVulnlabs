@@ -10,6 +10,9 @@ A collection of step-by-step walkthroughs (write-ups) of vulnerable virtual mach
 |-----|-------------|------------|
 | [AC-cybersploit](./AC-cybersploit) | CyberSploit CTF from VulnHub: reconnaissance, working with robots.txt, Base64 decoding, SSH access, privilege escalation via a kernel exploit | Easy |
 | [AC-deathnote](./AC-deathnote) | Walkthrough of the Death Note machine | - |
+| [AC-Matrix-breakout-2](./AC-Matrix-breakout-2/) | Walkthrough of the Matrix-breakout-2 machine | - |
+| [AC-Bob](./AC-Bob/) | Walkthrough of the Bob machine | - |
+| [AC-coming-soon](./) | No Walkthrough yet | - |
  
 ## Repository Structure
  
@@ -17,8 +20,10 @@ A collection of step-by-step walkthroughs (write-ups) of vulnerable virtual mach
 CAVulnlabs/
 ├── README.md
 ├── AC-cybersploit/
-└── AC-deathnote/
-└── in-progress/    
+├── AC-deathnote/
+├── AC-Matrix-breakout-2/ 
+└── AC-Bob/
+├── .../   
 ```
  
 ## Topics Covered
