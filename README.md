@@ -22,14 +22,14 @@ CAVulnlabs/
 ├── AC-cybersploit/
 ├── AC-deathnote/
 ├── AC-Matrix-breakout-2/ 
-└── AC-Bob/
+├── AC-Bob/
 ├── AC-C0lddBox/
 ```
  
 ## Topics Covered
  
 - Network reconnaissance and scanning (`netdiscover`, `nmap`)
-- Discovering hidden web resources (`dirb`, HTML source analysis, `robots.txt`)
+- Discovering hidden web resources (`dirb`, HTML source analysis, `robots.txt` )
 - Data decoding (Base64, binary)
 - Gaining initial access (SSH)
 - Privilege escalation (kernel exploits from Exploit-DB)
