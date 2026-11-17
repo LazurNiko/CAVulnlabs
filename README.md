@@ -13,7 +13,9 @@ A collection of step-by-step walkthroughs (write-ups) of vulnerable virtual mach
 | [AC-Matrix-breakout-2](./AC-Matrix-breakout-2/) | Walkthrough of the Matrix-breakout-2 machine | Easy |
 | [AC-Bob](./AC-Bob/) | Walkthrough of the Bob machine | Easy/Intermediate |
 | [AC-C0lddBox](./AC-C0lddBox/) | Walktrough of the C0lddBox machine | Easy |
-| [AC-C0lddBox](./AC-HackMePlease/) | Soon Walktrough of the HackMePlease machine | Easy |
+| [AC-C0lddBox](./AC-HackMePlease/) | Walktrough of the HackMePlease machine | Easy/Medium |
+| [AC-C0lddBox](./AC-Project_ICA/) | Soon Walktrough of the Project_ICA machine | Easy |
+
  
 ## Repository Structure
  
@@ -25,7 +27,8 @@ CAVulnlabs/
 ├── AC-Matrix-breakout-2/ 
 ├── AC-Bob/
 ├── AC-C0lddBox/
-├── AC-HackMePlease/ soon...
+├── AC-HackMePlease/
+├── AC-Project_ICA/ soon...
 ```
  
 ## Topics Covered
