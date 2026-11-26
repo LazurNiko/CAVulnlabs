@@ -50,7 +50,7 @@ sudo nmap -sC -sV -p- -oN tcp_scan --reason 192.168.56.106
 То проведемо дослідження структури вебсайту за допомогою **gobuster**:
 
 ```sh
-gobuster dir -u http://10.0.2.12/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+gobuster dir -u http://192.168.56.106/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 ```
 
 ![gobuster](/AC-C0lddBox/src/gobuster.png)
@@ -63,7 +63,7 @@ gobuster dir -u http://10.0.2.12/ -w /usr/share/wordlists/dirbuster/directory-li
 Визначили трьох користувачів, далі потрібно більш детально дослідити вордпресс на наявність додаткової інформації.
 
 ```sh
-wpscan --url http://10.0.2.12/ -e
+wpscan --url http://192.168.56.106/ -e
 ```
 Знову знаходимо трьох користувачів, вся інша інформація не несе цінності.
 
