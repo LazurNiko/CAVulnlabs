@@ -11,7 +11,7 @@ A collection of step-by-step walkthroughs (write-ups) of vulnerable virtual mach
 | [AC-cybersploit](./AC-cybersploit) | Walkthrough of the Cybersploit machine | Easy |
 | [AC-deathnote](./AC-deathnote) | Walkthrough of the Death Note machine | Easy |
 | [AC-Matrix-breakout-2](./AC-Matrix-breakout-2/) | Walkthrough of the Matrix-breakout-2 machine | Easy |
-| [AC-Bob](./AC-Bob/) | Walkthrough of the Bob machine | Easy/Intermediate |
+| [AC-Bob](./AC-Bob/) | Walkthrough of the Bob machine | Easy/Medium |
 | [AC-C0lddBox](./AC-C0lddBox/) | Walktrough of the C0lddBox machine | Easy |
 | [AC-HackMePlease](./AC-HackMePlease/) | Walktrough of the HackMePlease machine | Easy/Medium |
 | [AC-ICA1](./AC-ICA1/) | Walktrough of the Project ICA1 machine | Easy |
