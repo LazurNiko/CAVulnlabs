@@ -14,7 +14,8 @@ A collection of step-by-step walkthroughs (write-ups) of vulnerable virtual mach
 | [AC-Bob](./AC-Bob/) | Walkthrough of the Bob machine | Easy/Intermediate |
 | [AC-C0lddBox](./AC-C0lddBox/) | Walktrough of the C0lddBox machine | Easy |
 | [AC-HackMePlease](./AC-HackMePlease/) | Walktrough of the HackMePlease machine | Easy/Medium |
-| [AC-ICA1](./AC-Project_ICA1/) | Soon Walktrough of the Project_ICA machine | Easy |
+| [AC-ICA1](./AC-ICA1/) | Walktrough of the Project ICA1 machine | Easy |
+| [AC-ICA1](./AC-ICA1/) | Walktrough of the Project ICA1 machine | Easy |
 
 ## Repository Structure
  
