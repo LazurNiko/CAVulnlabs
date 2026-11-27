@@ -6,14 +6,6 @@ You can download the CTF [here](https://www.vulnhub.com/entry/colddbox-easy,586/
  
 ---
  
-## **Brief Overview of the CTF Solution Steps**
- 
-1. Obtain the **target machine's IP address** (netdiscover).
-2. Scan the **target machine's open ports** (**nmap**).
-3. Check the **HTTP service** and look for hints.
-4. Perform privilege escalation
----
- 
 ### 1. Obtaining the **Target Machine's IP Address**
  
 ```sh

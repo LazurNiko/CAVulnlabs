@@ -7,16 +7,6 @@ The goal of this **Capture the Flag (CTF)** is to gain root access to the target
  
 ---
  
----
- 
-## Walkthrough Stages
- 
-1. Get the **target machine's IP address** and scan its **open ports** with **nmap**.
-2. Explore **HTTP port 80** with **dirb**.
-3. Explore the other **HTTP port, 20000**.
-4. Get a **reverse shell via Python** and perform **privilege escalation**.
-With all the necessary info in hand, let's get started!
- 
 ## Step-by-Step CTF Walkthrough
 ### **Step 1: Get the target machine's IP address and scan open ports with nmap**
 To determine the IP address and scan the target machine, we use the commands:

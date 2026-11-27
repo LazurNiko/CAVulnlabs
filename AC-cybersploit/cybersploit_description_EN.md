@@ -2,12 +2,6 @@
 
 This document is a detailed walkthrough of a Capture the Flag (CTF) challenge published on VulnHub by the author “CyberSploit”. According to the author, the difficulty level of this CTF is EASY, and the goal is to gain root access to the target machine and find three flag files.
 
-Brief Overview of the Solution Steps
-
-Get the IP address of the target machine and scan its open ports with nmap.
-Inspect the HTTP service and find the first flag.
-Gain shell access and find the second flag.
-Gain root access and read the third flag.
 ## Step-by-Step CTF Analysis
 ### Step 1: Get the target machine’s IP address and scan open ports with nmap
 

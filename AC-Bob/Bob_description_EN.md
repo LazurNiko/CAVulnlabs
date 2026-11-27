@@ -6,14 +6,6 @@ The CTF can be downloaded [here](https://www.vulnhub.com/entry/bob-101,226/).
  
 ---
  
-## **Brief Overview of the Solution Steps**
- 
-1. Get the **target machine's IP address** (**netdiscover**).
-2. Scan the **target machine's open ports** (**nmap**).
-3. Inspect the **HTTP service** and find hints.
-4. Perform privilege escalation.
----
- 
 ### 1. Getting the **target machine's IP address**
  
 ```sh
