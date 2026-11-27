@@ -15,7 +15,7 @@ A collection of step-by-step walkthroughs (write-ups) of vulnerable virtual mach
 | [AC-C0lddBox](./AC-C0lddBox/) | Walktrough of the C0lddBox machine | Easy |
 | [AC-HackMePlease](./AC-HackMePlease/) | Walktrough of the HackMePlease machine | Easy/Medium |
 | [AC-ICA1](./AC-ICA1/) | Walktrough of the Project ICA1 machine | Easy |
-| [AC-ICA1](./AC-ICA1/) | Walktrough of the Project ICA1 machine | Easy |
+| [AC-Chronos](./AC-Chronos/) | Soon Walktrough of the Project ICA1 machine | Medium |
 
 ## Repository Structure
  
@@ -28,7 +28,8 @@ CAVulnlabs/
 ├── AC-Bob/
 ├── AC-C0lddBox/
 ├── AC-HackMePlease/
-├── AC-ICA1/ soon...
+├── AC-ICA1/
+├── AC-Chronos/ soon...
 ```
  
 ## Topics Covered
@@ -41,7 +42,7 @@ CAVulnlabs/
 - Finding and analyzing flags
 ## Tools
  
-Kali Linux, VirtualBox, nmap, netdiscover, dirb, Burp Suite, gcc, scp, hydra.
+Kali Linux, VirtualBox, nmap, netdiscover, dirb, gobuster, mysql, Burp Suite, gcc, hydra, wpscan.
  
 ## Environment
  
@@ -52,6 +53,7 @@ All machines are run locally in **VirtualBox** on an isolated host-only network 
 1. Download the image of the machine you want (the link is provided in the corresponding write-up).
 2. Run it in VirtualBox on an isolated network together with Kali Linux.
 3. Follow the write-up step by step, repeating the commands yourself.
+
 ## Disclaimer
  
 These materials are created **for educational purposes only**. The techniques described should only be used against your own lab machines or systems you have explicit written permission to test. The author is not responsible for any misuse of this information.
